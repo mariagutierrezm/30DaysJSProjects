@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Panels 💪</title>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="flex-panels.css">
+</head>
+<body>
+
+  <div class="panels">
+    <div class="panel panel1 text-one">
+      <p>Do not be afraid or discouraged, for the Lord will personally go ahead of</p>
+      <h1>YOU</h1>
+      <p>He will be with you; he will neither fail you nor abandon you.</p>
+    </div>
+    <div class="panel panel2">
+      <p>My hope is that all is well with you and that you</p>
+      <h1>ARE</h1>
+      <p>as healthy in body as you are strong in spirit.</p>
+    </div>
+    <div class="panel panel3">
+      <p>You are fully</p>
+      <h1>KNOWN</h1>
+      <p>and loved by God!</p>
+    </div>
+    <div class="panel panel4">
+      <p>I will rebuild you...You will again be happy </p>
+      <h1>AND</h1>
+      <p>dance merrily with your tambourines.</p>
+    </div>
+    <div class="panel panel5">
+      <p>I have loved you, with an everlasting</p>
+      <h1 id="wordChange">LOVED</h1>
+      <p>With unfailing love I have drawn you to myself.</p>
+    </div>
+  </div>
+
+  <script>
+
+    const panels = document.querySelectorAll('.panel');
+    const slides = document.querySelectorAll('.panels');
+
+    function toggleOpen() {
+        this.classList.toggle('open');
+    };
+
+    function toggleActive(e) { 
+      if(e.propertyName.includes('flex')) { 
+        this.classList.toggle('open-active'); //we are listening for a click on each panel
+      }
+    };
+
+    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+  </script>
+
+
+
+</body>
+</html>
