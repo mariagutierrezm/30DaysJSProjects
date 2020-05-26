@@ -9,6 +9,7 @@
 <body>
 
   <div class="panels">
+    <p class="aviso">Click on each panel!</p>
     <div class="panel panel1 text-one">
       <p>Do not be afraid or discouraged, for the Lord will personally go ahead of</p>
       <h1>YOU</h1>
@@ -47,7 +48,7 @@
 
     function toggleActive(e) { 
       if(e.propertyName.includes('flex')) { 
-        this.classList.toggle('open-active'); //we are listening for a click on each panel
+        this.classList.toggle('open-active');
       }
     };
 
@@ -55,8 +56,7 @@
     panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
 
   </script>
-
-
+  
 
 </body>
 </html>
