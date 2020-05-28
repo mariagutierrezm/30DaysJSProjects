@@ -137,25 +137,37 @@ body {
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
 
+    .panels {
+        flex-direction: column;
+    }
     .panel h1 {
-        font-size: 1.8em;
+        font-size: 1.7em;
     }
 
-    .panel.open-active > *:last-child {
-        font-size: 1.3em;
+    .panel.open h1 {
+        font-size: 2.5em;
+    }
+
+    .panel > *:first-child {
+        transform: translateX(100%);
+    }
+
+    .panel > *:last-child {
+        transform: translateX(100%);
     }
 
     .panel.open-active > *:first-child {
-        font-size: 1.3em;
+        font-size: 1.4em;
+    }
+
+    .panel.open-active > *:last-child {
+        font-size: 1.4em;
     }
 
     .panels .aviso {
-        bottom: 500px;
-        left: 50px;
-    }
-
-    .panel2 h1 {
-        height: 195px;
+        bottom: 370px;
+        left: 90px;
+        color: #005565;
     }
     
 
