@@ -90,7 +90,7 @@ body {
 .panel.open-active > *:first-child {
     transform: translateY(0);
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 1);
-    font-size: 1.5em;
+    font-size: 2.5em;
     padding: 0 10px;
 }
 
@@ -101,7 +101,7 @@ body {
 .panel.open-active > *:last-child {
     transform: translateY(0);
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 1);
-    font-size: 1.5em;
+    font-size: 2.5em;
     padding: 0 10px;
 }
 
