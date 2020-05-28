@@ -3,7 +3,7 @@ html {
     box-sizing: border-box;
     background-image: url('Pink.jpg');
     font-family: 'helvetica neue';
-    font-size: 20px;
+    /* font-size: 20px; */
     font-weight: 200;
 }
 
@@ -104,14 +104,6 @@ body {
     font-size: 1.5em;
     padding: 0 10px;
 }
-
-/* .panel.mobile-active > *:first-child {
-    font-size: 2.8em;
-}
-
-.panel.mobile-active > *:last-child {
-    font-size: 2.8em;
-} */
 
 .panel h1 {
     font-size: 2.5em;
