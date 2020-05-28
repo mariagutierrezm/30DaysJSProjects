@@ -26,7 +26,6 @@ body {
     font-size: 30px;
     bottom: 500px;
     left: 550px;
-    /* visibility: hidden; */
     animation: alert 3s linear none;
     opacity: 0;
     transition: all .3s ease-in-out;
@@ -80,7 +79,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-transform: uppercase;
     font-family: 'Amatic SC', cursive;
     font-weight: 700;
 }
@@ -107,9 +105,17 @@ body {
     padding: 0 10px;
 }
 
+/* .panel.mobile-active > *:first-child {
+    font-size: 2.8em;
+}
+
+.panel.mobile-active > *:last-child {
+    font-size: 2.8em;
+} */
+
 .panel h1 {
     font-size: 2.5em;
-    transition: 0.7s ease-in-out
+    transition: 0.7s ease-in-out;
 }
 
 .panel.open {   
@@ -118,7 +124,7 @@ body {
 
 .panel.open h1 {
     font-size: 4em;
-    transition: 1s ease-in-out
+    transition: 1s ease-in-out;
 }
 
 .panel1 h1 {
@@ -127,4 +133,26 @@ body {
 
 .panel5 h1 {
     color: #c41b1d;
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+
+    .panel h1 {
+        font-size: 1.8em;
+    }
+
+    .panel.open-active > *:last-child {
+        font-size: 1.3em;
+    }
+
+    .panel.open-active > *:first-child {
+        font-size: 1.3em;
+    }
+
+    .panels .aviso {
+        bottom: 500px;
+        left: 50px;
+    }
+    
+
 }
