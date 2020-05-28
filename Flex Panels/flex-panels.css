@@ -153,6 +153,10 @@ body {
         bottom: 500px;
         left: 50px;
     }
+
+    .panel2 h1 {
+        height: 195px;
+    }
     
 
 }
