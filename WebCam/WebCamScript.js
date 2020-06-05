@@ -40,7 +40,9 @@ function takePhoto() {
     snap.currentTime = 0;
     snap.play(); 
     const data = canvas.toDataURL('image/jpeg'); 
+    const newElement = document.createElement('div');
     const link = document.createElement('a');
+    newElement.appendChild(link);
     link.href = data; 
     link.setAttribute('download', 'beautiful'); 
     link.innerHTML = `<img src="${data}" alt="Beautiful person"/>`; 
@@ -91,4 +93,4 @@ function greenScreen(pixels) {
 }
 
 video.addEventListener('canplay', printToCanvas)
-//filter=you get pixels out of the canvas and then you do stuff with them changing RGB values
+ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));

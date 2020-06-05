@@ -18,7 +18,7 @@ html {
   
   .photobooth {
     background: #2d2626;
-    width: 45%;
+    width: 40%;
     height: 90%;
     margin: 2rem;
     border-radius: 10rem;
@@ -52,7 +52,7 @@ html {
   .btn {
     height: 40px;
     border: none;
-    font-family: cursive;
+    
   }
 
   .btn-take {
@@ -61,6 +61,10 @@ html {
     background-image:  radial-gradient(#DA1107 51%, #ED4B1D 53.5%);
     background-size: 159% 200%;
     background-position: bottom -8px center;
+  }
+
+  .btn, label, input {
+    font-family: cursive;
   }
   
   /*
@@ -71,14 +75,25 @@ html {
     width: 100%;
     height: 110px;
     background: darkgrey;
+    transform: translate3d(0, 0, 0);
+    overflow: hidden;
+    display: flex;
   }
-  
+
   .strip img {
     width: 100px;
+    margin: 13px 0;
     overflow-x: scroll;
-    padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+    padding: 0.3rem 0.3rem 1rem 0.3rem;
     box-shadow: 0 0 3px rgba(0,0,0,0.2);
     background: white;
+    animation: moveSlideshow 12s linear infinite;
+  }
+
+  @keyframes moveSlideshow {
+    100% { 
+      transform: translateX(67%);  
+    }
   }
   
   .strip a:nth-child(5n+1) img { transform: rotate(10deg); }
@@ -92,11 +107,50 @@ html {
     align-items: center;
   }
 
+  .rgb {
+    margin: 5px 15px;
+  }
+
+  input {
+    width: 60px;
+    padding: 0;
+    margin: 5px 2px;
+    font-size: 1em;
+  }
+
+  label {
+    color: #fff;
+    font-size: 1.2em;
+  }
+
   .btn-change {
     margin: 10px 5px;
     border-radius: 10%;
-    width: 60px;
+    width: 50px;
+    height: 29px;
     background-image: linear-gradient(to bottom, #e09b00, #986b07);
     color: white;
-    height: 35px;
   }
+
+  .prev, .next {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  /* .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  } */
+
+/* ._slider {
+  flex: 0;
+  flex-basis: 50%;
+} */ 

@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Get User Media Code Along!</title>
   <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
 </head>
 <body>
 
@@ -12,7 +14,8 @@
     <canvas class="photo"></canvas>
     <video class="player"></video>
     <button onClick="takePhoto()" class="btn btn-take">Take</button>
-    <div class="strip"></div>
+    <div class="strip js-flickity" ></div>
+    <!-- data-flickity-options='{ "wrapAround": true }' -->
     <div class="controls">
       <div class="rgb">
         <label for="rmin">Red Min:</label>
@@ -33,6 +36,9 @@
       <button onClick="redEffect()" class="btn btn-change">Red</button>
       <button onClick="rgbSplit()" class="btn btn-change">Split</button>
     </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
   </div>
 
   <audio class="snap" src="camera-shutter-click.wav" hidden></audio>
