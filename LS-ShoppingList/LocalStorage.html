@@ -5,6 +5,7 @@
   <title>LocalStorage</title>
   <link rel="stylesheet" href="localstorage.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script></script>
   
 </head>
 <body>
@@ -27,83 +28,6 @@
     </ul>
     
   </div>
-
-<script>
-  const addItems = document.querySelector('.add-items');
-  const itemsList = document.querySelector('.ingredients');
-  const items = JSON.parse(localStorage.getItem('items')) || [] ;
-
-  function addItem(e) {
-      e.preventDefault(); 
-      const text = (this.querySelector('[name=item]')).value; 
-      const item = {
-        text,
-        done: false
-      };
-      this.reset(); //this is the form element
-      items.push(item);
-      populateList(items, itemsList);
-      localStorage.setItem('items', JSON.stringify(items));
-      console.table(items);
-  };
-
-  function populateList(ingredients = [], ingredientsList) { 
-         ingredientsList.innerHTML = ingredients.map((ingredient, i) => { //item single, and an index, all sticked directly into the HTML
-            return `
-            <li>
-                <input type="checkbox" data-index=${i} id="item${i}" ${ingredient.done ? 'checked' : ''} />
-                <label for="item${i}" class="ingredients_done">${ingredient.text}</label> 
-                <a class="ingredients_close" href="${i}">x</a> 
-            </li>
-            `; 
-            //how do I update that one list item that I have instead of rendering the entire list - REACT or Angular
-        }).join(''); 
-  };
-
-  $('.ingredients').on('click', 'li a', function(event){
-      event.preventDefault();
-      //this.parentElement.style.display = 'none';
-      $( this ).parent().hide( 400 );
-      const index = event.target.getAttribute('href');
-      console.log(index);
-      removeItemfromArray(index);
-  });
-
-  function removeItemfromArray(index){ 
-    let newArr = items.splice(index, 1);
-    localStorage.setItem('items', JSON.stringify(items)); 
-  }
-
-  function toggleDone(e) {
-    if (e.target.matches('a')) {
-      console.log('clicked');
-    } else if (e.target.matches('input')) {
-      const element = e.target;
-      const index = element.dataset.index;
-      items[index].done = !items[index].done; 
-      localStorage.setItem('items', JSON.stringify(items)); 
-      populateList(items, itemsList); 
-      
-      console.log(itemsList.querySelector('.ingredients_name'));
-    }
-
-    
-  };
-
-
-
-  // var closeX = populateList();
-  
-  /*the whole idea behind EVENT DELEGATION is that rather than listening for a click or a change, what we do
-  is we look for somebody who is going to be on the page at the time of listening
-  what were doing is say hey parent when any of your childs get click can you pass the click on to them? and
-  when in the future there might be more children the parent will make sure to pass the click so they know what to do*/
-  addItems.addEventListener('submit', addItem);
-  itemsList.addEventListener('click', toggleDone);
-  populateList(items, itemsList); 
-//rerender the entire list 
-//make a button uncheck all, check all, delete and mirror it all to localStorage
-</script>
 
 
 </body>
