@@ -28,7 +28,7 @@ svg {
   width: 700px;
   max-width: 750px;
   background: rgba(255,255,255,0.95);
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.2);
 }
 
 .wrapper h2 {
@@ -86,12 +86,6 @@ svg {
   font-size: 18px;
 }
 
-/* .ingredients li.checked {
-  background: #888;
-  color: #fff;
-  text-decoration: line-through;
-} */
-
 .ingredients label {
   flex: 1;
   cursor: pointer;
@@ -110,9 +104,13 @@ input:checked + label:before {
   content: '🌮';
 }
 
-.ingredients_done {
+.ingredients_list {
+  background: #888;
+  color: #fff;
+}
+
+.ingredients_list label {
   text-decoration: line-through;
-  background-color: #8ecbe882;
 }
 
 .ingredients_close {

@@ -1,36 +1,61 @@
+  const inputText = document.querySelector('.add-items_ingredient'); 
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.ingredients');
-  const items = JSON.parse(localStorage.getItem('items')) || [] ;
+  
+  let done = false; 
 
-  function addItem(e) {
-      e.preventDefault(); 
-      const text = (this.querySelector('[name=item]')).value; 
+  function getLocalStorage(){
+    return localStorage.getItem("itemsList")
+    ? JSON.parse(localStorage.getItem("itemsList"))
+    : [];
+  }  
+
+  function createElement(i, text) {
+    let items = getLocalStorage();
+    const element = document.createElement("li");
+    element.innerHTML = `
+            <input type="checkbox" data-index="${i}" id="item${i}" ${items.done ? 'checked' : ''} />
+            <label for="item${i}" class="ingredients_done">${text}</label> 
+            <a class="ingredients_close" href="${i}">x</a> 
+        `;
+    itemsList.appendChild(element);   
+  }
+  
+  function setUpItem() {
+    let items = getLocalStorage();
+
+    if(items.length > 0) {
+      items.forEach(function (item) {
+        createElement(item.i, item.text);
+      });
+    }
+  }
+
+  function addItemToLocalStorage(i, text) {
       const item = {
+        i,
         text,
-        done: false
+        done
       };
-      this.reset(); //this is the form element
+      let items = getLocalStorage();
       items.push(item);
-      populateList(items, itemsList);
-      localStorage.setItem('items', JSON.stringify(items));
+      localStorage.setItem('itemsList', JSON.stringify(items));
       console.table(items);
   };
 
-  function populateList(ingredients = [], ingredientsList) { 
-         ingredientsList.innerHTML = ingredients.map((ingredient, i) => { //item single, and an index, all sticked directly into the HTML
-            return `
-            <li>
-                <input type="checkbox" data-index=${i} id="item${i}" ${ingredient.done ? 'checked' : ''} />
-                <label for="item${i}" class="ingredients_done">${ingredient.text}</label> 
-                <a class="ingredients_close" href="${i}">x</a> 
-            </li>
-            `; 
-        }).join(''); 
-  };
+  function addItemByEvent(e){
+    e.preventDefault();
+    let items = getLocalStorage();
+    const text = inputText.value;
+    const i = items.length;
+    createElement(i, text);
+    addItemToLocalStorage(i, text);
+    this.reset();
+  }
 
+  
   $('.ingredients').on('click', 'li a', function(event){
       event.preventDefault();
-      //this.parentElement.style.display = 'none';
       $( this ).parent().hide( 400 );
       const index = event.target.getAttribute('href');
       console.log(index);
@@ -38,6 +63,7 @@
   });
 
   function removeItemfromArray(index){ 
+    let items = getLocalStorage();
     let newArr = items.splice(index, 1);
     localStorage.setItem('items', JSON.stringify(items)); 
   };
@@ -48,16 +74,17 @@
     } else if (e.target.matches('input')) {
       const element = e.target;
       const index = element.dataset.index;
+      let items = getLocalStorage();
       items[index].done = !items[index].done; 
-      localStorage.setItem('items', JSON.stringify(items)); 
-      populateList(items, itemsList); 
+      localStorage.setItem('itemsList', JSON.stringify(items)); 
     }
     
   };
 
-  addItems.addEventListener('submit', addItem);
+  
+  addItems.addEventListener('submit', addItemByEvent);
   itemsList.addEventListener('click', toggleDone);
-  populateList(items, itemsList); 
+  window.addEventListener("DOMContentLoaded", setUpItem);
 //TODO- seach how to  //how do I update that one list item that I have instead of rendering the entire list - REACT or Angular
 // instead of rerender the entire list 
 //TODO-make a button uncheck all, check all, and mirror it all to localStorage
