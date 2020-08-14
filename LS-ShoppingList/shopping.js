@@ -88,15 +88,14 @@
     const idElement = e.target.getAttribute('href');
     let items = getLocalStorage();
     // findIndex(items, idElement);
-    var index = 0;
-    for(var i = 0; i < items.length; i++) {
-      if(items[i].id === idElement){
-        index = i;
-      }
-    }
-    console.log(index);
-    // var index = items.map(item => item.i).indexOf(element);
-    // var index = items.indexOf(item => item.element === i);
+    // var index = 0;
+    // for(var i = 0; i < items.length; i++) {
+    //   if(items[i].id === idElement){
+    //     index = i;
+    //   }
+    // }
+    var index = items.map(item => item.id).indexOf(idElement);
+    console.log(index, "is it");
     
     removeFromLocalStorage(index)
     /* https://stackoverflow.com/questions/7176908/how-to-get-index-of-object-by-its-property-in-javascript/54015295
