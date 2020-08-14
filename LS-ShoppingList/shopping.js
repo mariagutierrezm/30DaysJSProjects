@@ -14,8 +14,8 @@
     let items = getLocalStorage();
     const element = document.createElement("li");
     element.innerHTML = `
-            <input type="checkbox" id="item${id}" ${items.done ? 'checked' : ''} />
-            <label for="item${id}" class="ingredients_done">${text}</label> 
+            <input type="checkbox" id="${id}" ${items.done ? 'checked' : ''} />
+            <label for="${id}" class="ingredients_done">${text}</label> 
             <a class="ingredients_close" href="${id}">x</a> 
         `;
     itemsList.appendChild(element); 
@@ -69,16 +69,6 @@
 
     return (idstr);
 }
-  
-  // function findIndex(array, value){
-  //   var index = 0;
-  //   for(var i = 0; i < array.length; i++) {
-  //     if(array[i].id === value){
-  //       index = i;
-  //     }
-  //   }
-  //   index;
-  // }
 
   function removeItem(e){
     e.preventDefault(); 
@@ -87,7 +77,6 @@
 
     const idElement = e.target.getAttribute('href');
     let items = getLocalStorage();
-    // findIndex(items, idElement);
     // var index = 0;
     // for(var i = 0; i < items.length; i++) {
     //   if(items[i].id === idElement){
@@ -117,10 +106,20 @@
     //   console.log('clicked');
     // } else 
     if (e.target.matches('input')) {
-      const element = e.target;
-      const index = element.dataset.index;
+      const element = e.target.getAttribute('id');
       let items = getLocalStorage();
-      items[index].done = !items[index].done; 
+
+      // var index = items.map(item => item.done);
+      console.log(element);
+      for(var i = 0; i < items.length; i++){
+        console.log("enter loop");
+        console.log(items[i].done);
+        if(!items[i].done && items[i].id === element) {
+          items[i].done = true;
+          console.log(items[i].done, "inside loop");
+        }
+      }
+      // items[index].done = !items[index].done; 
       localStorage.setItem('itemsList', JSON.stringify(items)); 
     }
     
